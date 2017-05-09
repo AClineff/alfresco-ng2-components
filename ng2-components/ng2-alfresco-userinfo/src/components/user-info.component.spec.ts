@@ -197,15 +197,12 @@ describe('User info component', () => {
             });
         }));
 
-        beforeEach(() => {
-            fixture.detectChanges();
-        });
-
         afterEach(() => {
             jasmine.Ajax.uninstall();
         });
 
         it('should show full name next the user image', async(() => {
+            fixture.detectChanges();
             expect(element.querySelector('#userinfo_container')).toBeDefined();
             expect(element.querySelector('#bpm-username')).toBeDefined();
             expect(element.querySelector('#bpm-username').innerHTML).toContain('fake-bpm-first-name fake-bpm-last-name');
@@ -213,6 +210,7 @@ describe('User info component', () => {
         }));
 
         it('should get the bpm current user image from the service', async(() => {
+            fixture.detectChanges();
             expect(element.querySelector('#userinfo_container')).toBeDefined();
             expect(element.querySelector('#logged-user-img')).toBeDefined();
             expect(element.querySelector('#logged-user-img').getAttribute('src'))
@@ -221,6 +219,7 @@ describe('User info component', () => {
         }));
 
         it('should show last name if first name is null', async(() => {
+            fixture.detectChanges();
             let wrongBpmUser: BpmUserModel = new BpmUserModel({
                 firstName: null,
                 lastName: 'fake-last-name'
@@ -235,6 +234,7 @@ describe('User info component', () => {
         }));
 
         it('should not show first name if it is null string', async(() => {
+            fixture.detectChanges();
             let wrongFirstNameBpmUser: BpmUserModel = new BpmUserModel({
                 firstName: 'null',
                 lastName: 'fake-last-name'
@@ -248,6 +248,7 @@ describe('User info component', () => {
         }));
 
         it('should not show last name if it is null string', async(() => {
+            fixture.detectChanges();
             let wrongLastNameBpmUser: BpmUserModel = new BpmUserModel({
                 firstName: 'fake-first-name',
                 lastName: 'null'
